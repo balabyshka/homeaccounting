@@ -107,3 +107,201 @@ Home Accounting test App
 2. Зберігання в окрему таблицю: Щоб підвищити продуктивність, ви можете створити окрему таблицю для сум по категоріях і оновлювати її при кожній фінансовій операції. Цей підхід називається "попередній агрегації" (pre-aggregation). Він дозволяє швидко отримувати суми без необхідності повторних обчислень, але потребує додаткового керування даними для їх актуалізації при кожній зміні.
 
 Обираючи між цими підходами, вам слід враховувати розмір вашої бази даних, частоту додавання нових фінансових операцій і потреби у продуктивності. У більшості випадків оптимальний варіант полягає в зберіганні сум по категоріям в окремій таблиці для полегшення швидкого доступу до них, з оновленнями при додаванні нових операцій.
+
+------------------............--------------
+
+Напиши программу для ведения домашней бухгалтерии по следующему ТЗ:
+
+1. Программа использует Базу данных muSQL.
+2. Создать отдельные таблицы для следуюющих категорий:
+
+child, indebt_credit, education, house, car, food, cloth, medical, fastfood_cafe, presents, train_bus, tel_inet, alms
+
+Но с возможностью добавлять новые категории.
+
+3. Таблица для категорий содержит следующие столбцы - id, date, description, amount, kind_money.
+4. Создать таблицу с отдельными счетами и возможностью добавлять новые счета.
+5. Все это в графическом интерфейсе используя tkinter.
+6. Отдельная страница с отчетами. Отдельная страница с интерфейсом внесения данных. Отдельная страница планирования бюджета.
+7. С возможностью редактирования данных.
+8. С возможностью масштабирования программы.
+9. Добавить кнопку выгрузки данных из категорий в csv файл.
+
+---
+
+-- Создание базы данных HomeAccounting_002, если она ещё не создана
+CREATE DATABASE IF NOT EXISTS HomeAccounting_002;
+
+-- Использование базы данных HomeAccounting
+USE HomeAccounting_002;
+
+-- Создание таблицы child
+CREATE TABLE IF NOT EXISTS out_child (
+id INT AUTO_INCREMENT PRIMARY KEY,
+date DATE,
+description VARCHAR(255),
+amount DECIMAL(10, 2),
+kind_money VARCHAR(255),
+category VARCHAR(30)
+);
+
+-- Создание таблицы indebt_credit
+CREATE TABLE IF NOT EXISTS out_indebt_credit (
+id INT AUTO_INCREMENT PRIMARY KEY,
+date DATE,
+description VARCHAR(255),
+amount DECIMAL(10, 2),
+kind_money VARCHAR(255),
+category VARCHAR(30)
+);
+
+-- Создание таблицы education
+CREATE TABLE IF NOT EXISTS out_education (
+id INT AUTO_INCREMENT PRIMARY KEY,
+date DATE,
+description VARCHAR(255),
+amount DECIMAL(10, 2),
+kind_money VARCHAR(255),
+category VARCHAR(30)
+);
+
+-- Создание таблицы house
+CREATE TABLE IF NOT EXISTS out_house (
+id INT AUTO_INCREMENT PRIMARY KEY,
+date DATE,
+description VARCHAR(255),
+amount DECIMAL(10, 2),
+kind_money VARCHAR(255),
+category VARCHAR(30)
+);
+
+-- Создание таблицы car
+CREATE TABLE IF NOT EXISTS out_car (
+id INT AUTO_INCREMENT PRIMARY KEY,
+date DATE,
+description VARCHAR(255),
+amount DECIMAL(10, 2),
+kind_money VARCHAR(255),
+category VARCHAR(30)
+);
+
+-- Создание таблицы food
+CREATE TABLE IF NOT EXISTS out_food (
+id INT AUTO_INCREMENT PRIMARY KEY,
+date DATE,
+description VARCHAR(255),
+amount DECIMAL(10, 2),
+kind_money VARCHAR(255),
+category VARCHAR(30)
+);
+
+-- Создание таблицы cloth
+CREATE TABLE IF NOT EXISTS out_cloth (
+id INT AUTO_INCREMENT PRIMARY KEY,
+date DATE,
+description VARCHAR(255),
+amount DECIMAL(10, 2),
+kind_money VARCHAR(255),
+category VARCHAR(30)
+);
+
+-- Создание таблицы medical
+CREATE TABLE IF NOT EXISTS out_medical (
+id INT AUTO_INCREMENT PRIMARY KEY,
+date DATE,
+description VARCHAR(255),
+amount DECIMAL(10, 2),
+kind_money VARCHAR(255),
+category VARCHAR(30)
+);
+
+-- Создание таблицы fastfood_cafe
+CREATE TABLE IF NOT EXISTS out_fastfood_cafe (
+id INT AUTO_INCREMENT PRIMARY KEY,
+date DATE,
+description VARCHAR(255),
+amount DECIMAL(10, 2),
+kind_money VARCHAR(255),
+category VARCHAR(30)
+);
+
+-- Создание таблицы presents
+CREATE TABLE IF NOT EXISTS out_presents (
+id INT AUTO_INCREMENT PRIMARY KEY,
+date DATE,
+description VARCHAR(255),
+amount DECIMAL(10, 2),
+kind_money VARCHAR(255),
+category VARCHAR(30)
+);
+
+-- Создание таблицы train_bus
+CREATE TABLE IF NOT EXISTS out_train_bus (
+id INT AUTO_INCREMENT PRIMARY KEY,
+date DATE,
+description VARCHAR(255),
+amount DECIMAL(10, 2),
+kind_money VARCHAR(255),
+category VARCHAR(30)
+);
+
+-- Создание таблицы tel_inet
+CREATE TABLE IF NOT EXISTS out_tel_inet (
+id INT AUTO_INCREMENT PRIMARY KEY,
+date DATE,
+description VARCHAR(255),
+amount DECIMAL(10, 2),
+kind_money VARCHAR(255),
+category VARCHAR(30)
+);
+
+-- Создание таблицы alms
+CREATE TABLE IF NOT EXISTS out_alms (
+id INT AUTO_INCREMENT PRIMARY KEY,
+date DATE,
+description VARCHAR(255),
+amount DECIMAL(10, 2),
+kind_money VARCHAR(255),
+category VARCHAR(30)
+);
+
+---
+
+#
+
+CREATE DATABASE IF NOT EXISTS home_acc_main_v1;
+
+USE home_acc_main_v1;
+
+CREATE TABLE IF NOT EXISTS table_out (
+id INT AUTO_INCREMENT PRIMARY KEY,
+date DATE,
+description VARCHAR(255),
+amount DECIMAL(10, 2),
+typeacc VARCHAR(255),
+currency varchar(3),
+extra VARCHAR(255),
+category VARCHAR(255)
+);
+
+CREATE TABLE IF NOT EXISTS table_in (
+id INT AUTO_INCREMENT PRIMARY KEY,
+date DATE,
+description VARCHAR(255),
+amount DECIMAL(10, 2),
+typeacc VARCHAR(255),
+currency varchar(3),
+extra VARCHAR(255),
+category VARCHAR(255)
+);
+
+CREATE TABLE IF NOT EXISTS typevalue (
+id INT AUTO_INCREMENT PRIMARY KEY,
+description VARCHAR(255),
+typeval VARCHAR(255)
+);
+
+CREATE TABLE IF NOT EXISTS typecurent (
+id INT AUTO_INCREMENT PRIMARY KEY,
+curent VARCHAR(3)
+);
