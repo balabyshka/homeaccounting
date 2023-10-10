@@ -86,7 +86,7 @@ def clear_entries():
 
 def update_table():
     cursor = db.cursor()
-    query = "SELECT * FROM table_out ORDER BY id DESC LIMIT 5"
+    query = "SELECT * FROM table_out ORDER BY id DESC LIMIT 10"
     cursor.execute(query)
     expenses = cursor.fetchall()
     cursor.close()
@@ -102,7 +102,7 @@ def update_table():
 
 def update_table2():
     cursor = db.cursor()
-    query = "SELECT * FROM table_in ORDER BY id DESC LIMIT 5"
+    query = "SELECT * FROM table_in ORDER BY id DESC LIMIT 10"
     cursor.execute(query)
     expenses = cursor.fetchall()
     cursor.close()
@@ -126,6 +126,18 @@ def delete_expense():
         db.commit()
         cursor.close()
         update_table()
+
+
+def delete_expense2():
+    selected_item = tree2.selection()
+    if selected_item:
+        expense_id = tree2.item(selected_item, "values")[0]
+        cursor = db.cursor()
+        query = "DELETE FROM table_in WHERE id = %s"
+        cursor.execute(query, (expense_id,))
+        db.commit()
+        cursor.close()
+        update_table2()
 
 # Функция для редактирования выбранной записи COST money - ВИТРАТ
 
@@ -285,20 +297,23 @@ tree2.heading("8", text="Категорія")
 tree2.grid(row=10, columnspan=5)
 
 
-button_delete = tk.Button(frame, text="Удалить запись", command=delete_expense)
-button_delete.grid(row=4, column=2)
+button_delete = tk.Button(frame, text="Удалить Cost", command=delete_expense)
+button_delete.grid(row=8, column=6)
+
+button_delete = tk.Button(
+    frame, text="Удалить income", command=delete_expense2)
+button_delete.grid(row=10, column=6)
 
 button_edit = tk.Button(
     frame, text="Edit cost", command=edit_expense)
-button_edit.grid(row=0, column=3)
+button_edit.grid(row=8, column=5)
 
 button_edit = tk.Button(
     frame, text="Edit income", command=edit_income)
-button_edit.grid(row=1, column=3)
+button_edit.grid(row=10, column=5)
 
 
 # заполняем поля ввода значениями выделенной позиции в общем списке
-
 
 # def get_selected_row(event):
 #     # будем обращаться к глобальной переменной
