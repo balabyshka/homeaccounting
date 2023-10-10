@@ -194,49 +194,99 @@ root.title("Home Money")
 frame = tk.Frame(root)
 frame.pack(padx=20, pady=20)
 
+# ДАТА
 label_date = tk.Label(frame, text="Дата:")
 label_date.grid(row=0, column=0)
 
 entry_date = tk.Entry(frame)
 entry_date.grid(row=0, column=1)
 
-label_description = tk.Label(frame, text="Описание:")
+# Описание
+label_description = tk.Label(frame, text="Опис:")
 label_description.grid(row=1, column=0)
 
 entry_description = tk.Entry(frame)
 entry_description.grid(row=1, column=1)
 
-label_amount = tk.Label(frame, text="Сумма:")
+# Сумма
+label_amount = tk.Label(frame, text="Сума:")
 label_amount.grid(row=2, column=0)
 
 entry_amount = tk.Entry(frame)
 entry_amount.grid(row=2, column=1)
 
+# РАХУНОК
 label_typeacc = tk.Label(frame, text="Рахунок:")
 label_typeacc.grid(row=3, column=0)
 
-entry_typeacc = tk.Entry(frame)
+entry_typeacc = ttk.Combobox(frame,
+                             values=[
+                                 "Cash",
+                                 "AIB-4128",
+                                 "AIB-7155",
+                                 "AIB-VIKA",
+                                 "Mono-5383",
+                                 "PB-3871",
+                                 "PB-6959",
+                                 "AIB-Vlad"])
+print(dict(entry_typeacc))
 entry_typeacc.grid(row=3, column=1)
+entry_typeacc.current(1)
 
+# entry_typeacc = tk.Entry(frame)
+# entry_typeacc.grid(row=3, column=1)
+
+# ВАЛЮТА
 label_currency = tk.Label(frame, text="Валюта:")
 label_currency.grid(row=4, column=0)
 
-entry_currency = tk.Entry(frame)
+entry_currency = ttk.Combobox(frame,
+                              values=[
+                                  "UAH",
+                                  "EUR",
+                                  "USD"])
+print(dict(entry_currency))
 entry_currency.grid(row=4, column=1)
+entry_currency.current(1)
 
+# entry_currency = tk.Entry(frame)
+# entry_currency.grid(row=4, column=1)
+
+# Екстра
 label_extra = tk.Label(frame, text="Екстра:")
 label_extra.grid(row=5, column=0)
 
 entry_extra = tk.Entry(frame)
 entry_extra.grid(row=5, column=1)
 
+# Категорія
 label_category = tk.Label(frame, text="Категорія:")
 label_category.grid(row=6, column=0)
 
-entry_category = tk.Entry(frame)
+entry_category = ttk.Combobox(frame,
+                              values=[
+                                  "Child",
+                                  "IndebtCredit",
+                                  "Education",
+                                  "House",
+                                  "Car",
+                                  "Food",
+                                  "Cloth",
+                                  "Medical",
+                                  "FastFood",
+                                  "Presents",
+                                  "TelInet",
+                                  "B--etween",
+                                  "TrainBus"])
+print(dict(entry_category))
 entry_category.grid(row=6, column=1)
+entry_category.current(1)
+
+# entry_category = tk.Entry(frame)
+# entry_category.grid(row=6, column=1)
 
 
+# КНОПКИ
 button_add = tk.Button(frame, text="Add Cost", command=add_cost)
 button_add.grid(row=0, column=2)
 button_add = tk.Button(frame, text="Add Income", command=add_income)
@@ -338,6 +388,17 @@ button_edit.grid(row=10, column=5)
 
 #     # привязываем выбор любого элемента списка к запуску функции выбора
 # list1.bind('<<ListboxSelect>>', get_selected_row)
+
+
+# Працюючий КОМБОБОКС
+# comboExample = ttk.Combobox(frame,
+#                             values=[
+#                                 "UAH",
+#                                 "EUR",
+#                                 "USD"])
+# print(dict(comboExample))
+# comboExample.grid(row=9, column=5)
+# comboExample.current(1)
 
 
 update_table()
