@@ -13,7 +13,6 @@ db = mysql.connector.connect(
     database="home_acc_main_v1"
 )
 
-
 # date DATE,
 # description VARCHAR(255),
 # amount DECIMAL(10, 2),
@@ -23,6 +22,8 @@ db = mysql.connector.connect(
 # category VARCHAR(255)
 
 # Функция для добавления записи в БД траты
+
+
 def add_cost():
     date = entry_date.get()
     description = entry_description.get()
@@ -43,6 +44,7 @@ def add_cost():
     messagebox.showinfo("Успешно", "Запись добавлена")
     # clear_entries()
     update_table()
+
 
 # Функция для добавления записи в БД приход
 
@@ -68,6 +70,7 @@ def add_income():
     # clear_entries()
     update_table2()
 
+
 # Функция для очистки полей ввода
 
 
@@ -81,7 +84,7 @@ def clear_entries():
     entry_category.delete(0, tk.END)
 
 
-# Функция для обновления отображения таблицы
+# Функция для обновления отображения таблиц
 
 
 def update_table():
@@ -113,7 +116,8 @@ def update_table2():
     for expense in expenses:
         tree2.insert("", "end", values=expense)
 
-# Функция для удаления выбранной записи
+
+# Функции для удаления выбранной записи
 
 
 def delete_expense():
@@ -139,6 +143,7 @@ def delete_expense2():
         cursor.close()
         update_table2()
 
+
 # Функция для редактирования выбранной записи COST money - ВИТРАТ
 
 
@@ -161,7 +166,6 @@ def edit_expense():
         db.commit()
         cursor.close()
         update_table()
-
 
 # Функция для редактирования выбранной записи INCOME money - ВХІДНИХ
 
@@ -188,6 +192,9 @@ def edit_income():
 
 
 # Создайте графический интерфейс
+# графический интерфейс
+
+
 root = tk.Tk()
 root.title("Home Money")
 

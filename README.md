@@ -1,9 +1,9 @@
 # homeaccounting
 
 DataBase table name - Expenses
-(host="localhost", user="alex", password="alex67", database="HomeAccounting")
-#CREATE DATABASE HomeAccounting;
-#USE HomeAccounting;
+(host="localhost", user="alex", password="alex67", database="home_acc_main_v1")
+#CREATE DATABASE home_acc_main_v1;
+#USE home_acc_main_v1;
 
         #CREATE TABLE Expenses (
         #    id INT AUTO_INCREMENT PRIMARY KEY,
@@ -12,10 +12,19 @@ DataBase table name - Expenses
         #    amount DECIMAL(10, 2)
         #);
 
-- id
-- date
-- description
-- amount
+# date DATE,
+
+# description VARCHAR(255),
+
+# amount DECIMAL(10, 2),
+
+# typeacc VARCHAR(255),
+
+# currency varchar(3),
+
+# extra VARCHAR(255),
+
+# category VARCHAR(255)
 
 Home Accounting test App
 
@@ -25,11 +34,40 @@ Home Accounting test App
 - Date
 - Description
 - Amount
-- Дата та час внесення даних
+- назва кошелька
 - Валюта
+- Екстра
 - Категорія
-- Підкатегорія
-- Помітка про регулярність (для визначення регулярних плптежів)
+
+# date DATE,
+
+# description VARCHAR(255),
+
+# amount DECIMAL(10, 2),
+
+# typeacc VARCHAR(255),
+
+# currency varchar(3),
+
+# extra VARCHAR(255),
+
+# category VARCHAR(255)
+
+### Типи рахунків (КОШЕЛЬКІВ)
+
+"Cash",
+"AIB-4128", "AIB-7155", "AIB-VIKA", "Mono-5383", "PB-3871", "PB-6959", "AIB-Vlad"
+
+### Валюти
+
+"UAH" -- "EUR" -- "USD"
+
+### Катнгорії
+
+"Child", "IndebtCredit", "Education", "House",
+"Car",
+"Food",
+"Cloth", "Medical", "FastFood", "Presents", "TelInet", "B--etween", "TrainBus"
 
 Організація структури бази даних для програми ведення домашньої бухгалтерії може бути складною задачею, але ось кілька загальних порад:
 
