@@ -1,12 +1,12 @@
 import tkinter as tk
 from tkinter import messagebox, ttk
 import mysql.connector
+from tkinter.messagebox import showinfo, askyesno
 
 # from tkinter import *
 # from tkinter import ttk
 
 # Создайте подключение к базе данных MySQL
-
 
 db = mysql.connector.connect(
     host="localhost",
@@ -121,29 +121,38 @@ def update_table2():
 
 # Функции для удаления выбранной записи
 
-
 def delete_expense():
-    selected_item = tree.selection()
-    if selected_item:
-        expense_id = tree.item(selected_item, "values")[0]
-        cursor = db.cursor()
-        query = "DELETE FROM table_out WHERE id = %s"
-        cursor.execute(query, (expense_id,))
-        db.commit()
-        cursor.close()
-        update_table()
+    result = askyesno(title="Подтвержение операции",
+                      message="Подтвердить операцию?")
+    if result:
+        selected_item = tree.selection()
+        if selected_item:
+            expense_id = tree.item(selected_item, "values")[0]
+            cursor = db.cursor()
+            query = "DELETE FROM table_out WHERE id = %s"
+            cursor.execute(query, (expense_id,))
+            db.commit()
+            cursor.close()
+            update_table()
+    else:
+        showinfo("Результат", "Операция отменена")
 
 
 def delete_expense2():
-    selected_item = tree2.selection()
-    if selected_item:
-        expense_id = tree2.item(selected_item, "values")[0]
-        cursor = db.cursor()
-        query = "DELETE FROM table_in WHERE id = %s"
-        cursor.execute(query, (expense_id,))
-        db.commit()
-        cursor.close()
-        update_table2()
+    result = askyesno(title="Подтвержение операции",
+                      message="Подтвердить операцию?")
+    if result:
+        selected_item = tree2.selection()
+        if selected_item:
+            expense_id = tree2.item(selected_item, "values")[0]
+            cursor = db.cursor()
+            query = "DELETE FROM table_in WHERE id = %s"
+            cursor.execute(query, (expense_id,))
+            db.commit()
+            cursor.close()
+            update_table2()
+    else:
+        showinfo("Результат", "Операция отменена")
 
 
 # Функция для редактирования выбранной записи COST money - ВИТРАТ
