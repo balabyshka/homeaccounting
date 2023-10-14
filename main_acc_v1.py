@@ -6,6 +6,8 @@ import mysql.connector
 # from tkinter import ttk
 
 # Создайте подключение к базе данных MySQL
+
+
 db = mysql.connector.connect(
     host="localhost",
     user="alex",
@@ -272,6 +274,7 @@ label_category.grid(row=6, column=0)
 
 entry_category = ttk.Combobox(frame,
                               values=[
+                                  "Salary",
                                   "Child",
                                   "IndebtCredit",
                                   "Education",
@@ -283,6 +286,11 @@ entry_category = ttk.Combobox(frame,
                                   "FastFood",
                                   "Presents",
                                   "TelInet",
+                                  "debt",
+                                  "Other",
+                                  "addIncome",
+                                  "pension",
+                                  "rent",
                                   "B--etween",
                                   "TrainBus"])
 print(dict(entry_category))
